@@ -1,0 +1,7 @@
+app:
+  datasource:
+    jdbc-url: jdbc:postgresql://192.168.99.101:5432/demodb
+    username: postgres
+    password: password
+    pool-size: 30
+#    docker run --name try1 -e POSTGRES_PASSWORD=password -d -p 5432:5432 postgres:alpine
