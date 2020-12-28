@@ -16,12 +16,16 @@ public class PersonService {
     private final PersonDao personDao;
 
     @Autowired
-    public PersonService(@Qualifier("postgres") PersonDao personDao) {
+    public PersonService(@Qualifier("fakeDao") PersonDao personDao) {
         this.personDao = personDao;
     }
 
-    public int addPerson(Person person) {
-        return personDao.insertPerson(person);
+    public int addPerson(UUID id, Person person) {
+        if (id == null) {
+            return personDao.insertPerson(person);
+        } else {
+            return personDao.insertPerson(id, person);
+        }
     }
 
     public List<Person> getAllPeople() {

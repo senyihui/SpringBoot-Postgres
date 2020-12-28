@@ -12,6 +12,7 @@ import java.util.UUID;
 
 @RequestMapping("api/v1/person")
 @RestController
+@CrossOrigin
 public class PersonController {
     private final PersonService personService;
 
@@ -22,7 +23,7 @@ public class PersonController {
 
     @PostMapping
     public void addPerson(@Valid @NotNull @RequestBody Person person) {
-        personService.addPerson(person);
+        personService.addPerson(person.getId(), person);
     }
 
     @GetMapping
